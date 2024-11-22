@@ -151,37 +151,30 @@
 
 .card:nth-of-type(2) .card__image-filter {
   filter: contrast(40%) grayscale(0.9);
-
 }
 
 .card:nth-of-type(3) .card__image-filter {
   filter: saturate(350%);
-
 }
 
 .card:nth-of-type(4) .card__image-filter {
   filter: sepia(1) blur(0.1rem);
-
 }
 
 .card:nth-of-type(5) .card__image-filter {
   filter: invert(0.7);
-
 }
 
 .card:nth-of-type(6) .card__image-filter {
   filter: hue-rotate(45deg) blur(0.1rem);
-
 }
 
 .card:nth-of-type(7) .card__image-filter {
   filter: sepia(40%) invert(0.4) saturate(550%);
-
 }
 
 .card:nth-of-type(8) .card__image-filter {
   filter: contrast(200%) hue-rotate(90deg);
-
 }
 
 .card__image-watermark {
@@ -195,8 +188,6 @@
   text-shadow: 1px var(--main-color);
 }
 
-
-
 .card__text {
   width: 94%;
   margin: 32px auto 0;
@@ -205,7 +196,6 @@
 }
 
 .card__button-container {
- 
   height: 38px;
   margin: 25px;
   align-self: end;
@@ -223,7 +213,6 @@
   min-width: 39px;
   min-height: 36px;
   padding: 0;
-
 }
 
 .like-icon {
@@ -279,7 +268,6 @@
 .sparks {
   opacity: 0;
 }
-
 
 .core {
   fill: transparent;
@@ -401,17 +389,14 @@
   background-color: var(--main-color);
   border: solid 2px var(--accent-color);
   padding: 0;
-
 }
 
-.save__dialog .save__button{
+.save__dialog .save__button {
   margin: 26px auto 30px;
   width: max(293px, 257px);
   height: 38px;
   justify-content: center;
-
 }
-
 
 .save__dialog[open] {
   display: flex;
@@ -421,7 +406,6 @@
 
 .save__dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
-
 }
 
 .dialog__icon {
@@ -433,8 +417,8 @@
   color: var(--accent-color);
   font-family: "PressStart2P";
   font-size: 14px;
- text-transform: uppercase;
- line-height: 1.5em;
+  text-transform: uppercase;
+  line-height: 1.5em;
   width: max(293px, 257px);
   height: 63px;
   margin-top: 30px;
@@ -459,7 +443,6 @@
 }
 
 @media (width <= 375px) {
-
   .header {
     width: 100%;
     height: 327px;
@@ -482,7 +465,6 @@
     flex-direction: column;
     width: 84%;
     height: 84px;
-
   }
 
   .save__button-icon {
@@ -490,32 +472,5 @@
     height: 28px;
     margin: 15px auto 8px;
   }
- 
 }
 
-@keyframes arrow {
-  from {
-    translate: 0;
-  }
-  to {
-    translate: 4px;
-  }
-}
-
-@keyframes heartbeat {
-  from {
-    scale: 1;
-  }
-  to {
-    scale: 1.5;
-  }
-}
-
-@keyframes sparks {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
