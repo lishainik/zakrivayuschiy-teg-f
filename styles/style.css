@@ -15,6 +15,507 @@
 */
 
 .page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: "Inter", monospace;
+  font-variation-settings: "wght" var(--font-normal);
+  background-color: var(--main-color);
+  color: var(--accent-color);
+  background-image: var(--gradient);
+  background-size: cover;
+}
+
+.header {
+  width: 90%;
+  max-width: 700px;
+  height: 368px;
+  background-color: var(--main-color);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  font-family: "PressStart2P";
+  border: solid 2px var(--accent-color);
+}
+
+.header__title {
+  margin-top: max(136px, 120px);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__subtitle {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.header__theme-menu {
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.theme-menu__list {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: start;
+  height: 70px;
+  width: 84px;
+  gap: 12px;
+}
+
+.theme-menu__item button {
+  background-color: var(--main-color);
+  border: none;
+  text-transform: uppercase;
+  text-align: left;
+  transition: opacity 0.3s ease;
+}
+
+.theme-menu__item button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+  position: relative;
+}
+
+.theme-menu__item button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__item button:disabled::before {
+  content: "▶";
+  position: absolute;
+  left: -12px;
+  animation: arrow 0.5s infinite ease-in-out alternate-reverse;
+}
+
+.theme-menu__item button:focus-visible {
+  opacity: 0.6;
+  outline: none;
+}
+
+.theme-menu__item button::after {
+  display: block;
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s, opacity 0.3s ease;
+}
+
+.theme-menu__item button:focus-visible::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  opacity: 0.6;
+}
+
+.card {
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 50px;
+  background-color: var(--main-color);
+  border: solid 2px var(--accent-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:first-of-type {
+  margin-top: 100px;
+}
+
+.card__title {
+  font-variation-settings: "wght" var(--font-header);
+  font-size: 18px;
+  margin: 4px 10px 4px;
+}
+
+.card__image_wrapper {
+  position: relative;
+  max-width: 696px;
+  max-height: 696px;
+  aspect-ratio: 1/1;
+}
+
+.card__image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card:nth-of-type(2) .card__image-filter {
+  filter: contrast(40%) grayscale(0.9);
+
+}
+
+.card:nth-of-type(3) .card__image-filter {
+  filter: saturate(350%);
+
+}
+
+.card:nth-of-type(4) .card__image-filter {
+  filter: sepia(1) blur(0.1rem);
+
+}
+
+.card:nth-of-type(5) .card__image-filter {
+  filter: invert(0.7);
+
+}
+
+.card:nth-of-type(6) .card__image-filter {
+  filter: hue-rotate(45deg) blur(0.1rem);
+
+}
+
+.card:nth-of-type(7) .card__image-filter {
+  filter: sepia(40%) invert(0.4) saturate(550%);
+
+}
+
+.card:nth-of-type(8) .card__image-filter {
+  filter: contrast(200%) hue-rotate(90deg);
+
+}
+
+.card__image-watermark {
+  position: absolute;
+  font-family: "PressStart2P";
+  font-size: 14px;
+  top: 30px;
+  right: 25px;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  text-shadow: 1px var(--main-color);
+}
+
+
+
+.card__text {
+  width: 94%;
+  margin: 32px auto 0;
+  font-size: 18px;
+  line-height: 1.1em;
+}
+
+.card__button-container {
+ 
+  height: 38px;
+  margin: 25px;
+  align-self: end;
+  display: flex;
+  background: none;
+  border: none;
+  justify-content: space-between;
+  padding: 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+  min-width: 39px;
+  min-height: 36px;
+  padding: 0;
+
+}
+
+.like-icon {
+  margin-right: 8px;
+}
+
+.card__like-button {
+  padding: 0;
+  z-index: 3;
+  width: 130px;
+  height: 100%;
+  position: relative;
+  border: solid var(--accent-color) 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  background-color: var(--main-color);
+}
+
+.button__text {
+  color: var(--button__reverse-color);
+  font-family: "PressStart2P";
+  font-size: 14px;
+  transition: color 0.5s ease-in-out;
+  mix-blend-mode: difference;
+}
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color);
+  transform: translate(-100%);
+  transition: 0.5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+
+.card__button-container:focus-visible {
+  outline: none;
+
+  .like-icon {
+    outline: 2px solid var(--accent-color);
+    outline-offset: -1px;
+  }
+
+  .card__like-button {
+    box-shadow: 2px 2px 0px 0px #000000;
+  }
+}
+
+.sparks {
+  opacity: 0;
+}
+
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s 0.05s;
+}
+
+.contour {
+  transition: fill 0.3s 0.06s;
+}
+
+.card__button-container:hover {
+  cursor: pointer;
+
+  .core {
+    fill: var(--accent-color);
+    transition: fill 0.03s;
+  }
+
+  .main-body {
+    fill: var(--accent-color);
+    transition: fill 0.3s;
+  }
+
+  .card__like-button::before {
+    transform: translate(0);
+  }
+  .card__icon-button .button__text {
+    position: relative;
+    z-index: 2;
+    color: var(--main-color);
+    mix-blend-mode: difference;
+  }
+}
+
+.card__button-container:active {
+  .core {
+    fill: var(--heart-color);
+    transition: fill 0.03s;
+  }
+
+  .main-body {
+    fill: var(--heart-color);
+    transition: fill 0.3s;
+  }
+}
+
+.like-icon.is-liked {
+  .contour {
+    fill: var(--heart-color);
+  }
+
+  .core {
+    fill: var(--heart-color);
+    transition: fill 0.03s;
+  }
+
+  .main-body {
+    fill: var(--heart-color);
+    transition: fill 0.3s;
+  }
+
+  .heart {
+    animation: heartbeat 0.3s ease-in 0.1s alternate-reverse;
+  }
+
+  .sparks {
+    animation: sparks 0.3s 0.3s ease-in alternate-reverse;
+  }
+}
+
+.save__button {
+  position: relative;
+  width: max(336px, 306px);
+  background: var(--main-color);
+  margin: 50px auto 100px;
+  height: 55px;
+  display: flex;
+  border: solid var(--accent-color) 2px;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+  padding: 0;
+}
+
+.save__button::before {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color);
+  transform: translate(-100%);
+  transition: 0.5s ease-in-out;
+  height: 100%;
+  width: 100%;
+}
+
+.save__button:hover::before {
+  transform: translate(0);
+}
+
+.save__button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
+.save__button-icon {
+  color: var(--button__reverse-color);
+  margin-left: 12px;
+  margin-right: 8px;
+  mix-blend-mode: difference;
+}
+
+.save__dialog {
+  width: max(353px, 341px);
+  height: 191px;
+  background-color: var(--main-color);
+  border: solid 2px var(--accent-color);
+  padding: 0;
+
+}
+
+.save__dialog .save__button{
+  margin: 26px auto 30px;
+  width: max(293px, 257px);
+  height: 38px;
+  justify-content: center;
+
+}
+
+
+.save__dialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save__dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+
+}
+
+.dialog__icon {
+  height: 39px;
+  width: 39px;
+}
+
+.dialog__title {
+  color: var(--accent-color);
+  font-family: "PressStart2P";
+  font-size: 14px;
+ text-transform: uppercase;
+ line-height: 1.5em;
+  width: max(293px, 257px);
+  height: 63px;
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.dialog__title span {
+  width: 80%;
+}
+
+@supports (
+  (text-stroke: 1px var(--main-color)) or
+    (-webkit-text-stroke: 1px var(--main-color))
+) {
+  .card__image-watermark {
+    -webkit-text-stroke: 1px var(--main-color);
+    text-stroke: 1px var(--main-color);
+    text-shadow: none;
+  }
+}
+
+@media (width <= 375px) {
+
+  .header {
+    width: 100%;
+    height: 327px;
+  }
+
+  .header__title {
+    margin-top: 120px;
+  }
+
+  .card__image-watermark {
+    top: 26px;
+    right: 12px;
+  }
+
+  .card__text {
+    width: 85%;
+  }
+
+  .save__button {
+    flex-direction: column;
+    width: 84%;
+    height: 84px;
+
+  }
+
+  .save__button-icon {
+    width: 28px;
+    height: 28px;
+    margin: 15px auto 8px;
+  }
+ 
+}
+
+@keyframes arrow {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: 4px;
+  }
+}
+
+@keyframes heartbeat {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.5;
+  }
+}
+
+@keyframes sparks {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
