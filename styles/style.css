@@ -32,7 +32,6 @@
 .header {
   width: 90%;
   max-width: 700px;
-  min-height: 368px;
   background-color: var(--main-color);
   margin-top: 100px;
   display: flex;
@@ -56,6 +55,7 @@
 
 .header__theme-menu {
   margin-top: 25px;
+  margin-bottom: 18px;
   font-size: 14px;
 }
 
@@ -213,10 +213,12 @@
   align-items: center;
   background-color: transparent;
   border: none;
+  outline-offset: -2px;
   min-width: 38px;
   min-height: 38px;
   padding: 0;
   margin-right: 7px;
+  transition: outline 0.3s ease;
 }
 
 .heart {
@@ -229,7 +231,7 @@
 
 .core {
   fill: transparent;
-  transition: fill 0.3s linear;
+  transition: fill 0.3s 0.03s linear;
 }
 
 .main-body {
@@ -238,16 +240,17 @@
 }
 
 .contour {
-  transition: fill 0.3s linear;
+  transition: fill 0.1s linear;
 }
 
-.card__button-container:hover {
+.card__like-button:hover {
   cursor: pointer;
 
   .button::before {
     transform: translate(0);
   }
-
+}
+.card__icon-button:hover {
   .core {
     fill: var(--accent-color);
     transition: fill 0.3s linear;
@@ -259,7 +262,19 @@
   }
 }
 
-.card__button-container:active {
+.card__icon-button:active {
+  .core {
+    fill: var(--heart-color);
+    transition: fill 0.03s linear;
+  }
+
+  .main-body {
+    fill: var(--heart-color);
+    transition: fill 0.3s 0.05s linear;
+  }
+}
+
+.card__button-container:has(.card__like-button:active) {
   .core {
     fill: var(--heart-color);
     transition: fill 0.03s linear;
@@ -274,7 +289,7 @@
 .like-icon.is-liked {
   .contour {
     fill: var(--heart-color);
-    transition: fill 0.1s linear;
+    transition: fill 0.3s 0.06s linear;
   }
 
   .core {
@@ -323,7 +338,7 @@
 
 .button:focus-visible {
   outline: none;
-  box-shadow: 2px 2px 0px 0px #000000;
+  box-shadow: 2px 2px 0px 0px var(--accent-color);
 }
 
 .card__like-button {
@@ -332,7 +347,7 @@
 }
 
 .button__text {
-  color: var(--button__reverse-color);
+  color: var(--reverse-color);
   font-family: "PressStart2P", fantasy;
   font-size: 14px;
   transition: color 0.5s ease-in-out;
@@ -341,7 +356,6 @@
 
 .card__icon-button:focus-visible {
   outline: 2px solid var(--accent-color);
-  outline-offset: -2px;
 }
 
 .save__button {
@@ -352,14 +366,13 @@
 }
 
 .save__button-icon {
-  color: var(--button__reverse-color);
+  color: var(--reverse-color);
   margin-right: 8px;
   mix-blend-mode: difference;
 }
 
 .save__dialog {
   width: max(353px, 341px);
-  min-height: 191px;
   background-color: var(--main-color);
   border: solid 2px var(--accent-color);
   padding: 0;
@@ -422,11 +435,18 @@
 @media (width <=375px) {
   .header {
     width: 100%;
-    min-height: 327px;
   }
 
   .header__title {
     margin-top: 120px;
+  }
+
+  .header__theme-menu {
+    margin-top: 23px;
+  }
+
+  .theme-menu__item {
+    margin-left: 5px;
   }
 
   .card__image-watermark {
@@ -445,13 +465,14 @@
 
   .save__button {
     flex-direction: column;
-    width: 84%;
+    width: 83%;
     height: 84px;
   }
 
   .save__button-icon {
     width: 28px;
     height: 28px;
-    margin: 15px auto 8px;
+    margin-bottom: 5px;
+    margin-right: 0;
   }
 }
