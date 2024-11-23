@@ -219,10 +219,6 @@
   margin-right: 7px;
 }
 
-.card__icon-button:focus-visible {
-  outline: none;
-}
-
 .heart {
   transform-origin: center center;
 }
