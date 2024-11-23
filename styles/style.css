@@ -20,25 +20,26 @@
   align-items: center;
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: "Inter", monospace;
+  font-family: "Inter", sans-serif;
   font-variation-settings: "wght" var(--font-normal);
   background-color: var(--main-color);
   color: var(--accent-color);
   background-image: var(--gradient);
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .header {
   width: 90%;
   max-width: 700px;
-  height: 368px;
+  min-height: 368px;
   background-color: var(--main-color);
   margin-top: 100px;
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  font-family: "PressStart2P";
+  font-family: "PressStart2P", fantasy;
   border: solid 2px var(--accent-color);
 }
 
@@ -63,7 +64,6 @@
   position: relative;
   flex-direction: column;
   align-items: start;
-  height: 70px;
   width: 84px;
   gap: 12px;
 }
@@ -109,9 +109,7 @@
 }
 
 .theme-menu__item button:focus-visible::after {
-  content: "";
   width: 100%;
-  height: 2px;
   opacity: 0.6;
 }
 
@@ -141,45 +139,47 @@
   max-width: 696px;
   max-height: 696px;
   aspect-ratio: 1/1;
+  outline: 2px solid var(--accent-color);
 }
 
 .card__image {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
-.card:nth-of-type(2) .card__image-filter {
+.filter__grayscale {
   filter: contrast(40%) grayscale(0.9);
 }
 
-.card:nth-of-type(3) .card__image-filter {
+.filter__saturation {
   filter: saturate(350%);
 }
 
-.card:nth-of-type(4) .card__image-filter {
+.filter__sepiablur {
   filter: sepia(1) blur(0.1rem);
 }
 
-.card:nth-of-type(5) .card__image-filter {
+.filter__inversion {
   filter: invert(0.7);
 }
 
-.card:nth-of-type(6) .card__image-filter {
+.filter__hueshift {
   filter: hue-rotate(45deg) blur(0.1rem);
 }
 
-.card:nth-of-type(7) .card__image-filter {
+.filter__sepiasaturation-inverted {
   filter: sepia(40%) invert(0.4) saturate(550%);
 }
 
-.card:nth-of-type(8) .card__image-filter {
+.filter__hueshift-contrast {
   filter: contrast(200%) hue-rotate(90deg);
 }
 
 .card__image-watermark {
   position: absolute;
-  font-family: "PressStart2P";
+  font-family: "PressStart2P", fantasy;
   font-size: 14px;
   top: 30px;
   right: 25px;
@@ -208,61 +208,23 @@
 }
 
 .card__icon-button {
-  background-color: transparent;
-  border: none;
-  min-width: 39px;
-  min-height: 36px;
-  padding: 0;
-}
-
-.like-icon {
-  margin-right: 8px;
-}
-
-.card__like-button {
-  padding: 0;
-  z-index: 3;
-  width: 130px;
-  height: 100%;
-  position: relative;
-  border: solid var(--accent-color) 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: box-shadow 0.3s ease;
-  overflow: hidden;
-  background-color: var(--main-color);
+  background-color: transparent;
+  border: none;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 0;
+  margin-right: 7px;
 }
 
-.button__text {
-  color: var(--button__reverse-color);
-  font-family: "PressStart2P";
-  font-size: 14px;
-  transition: color 0.5s ease-in-out;
-  mix-blend-mode: difference;
-}
-
-.card__like-button::before {
-  content: "";
-  position: absolute;
-  background-color: var(--accent-color);
-  transform: translate(-100%);
-  transition: 0.5s ease-in-out;
-  height: 100%;
-  width: 100%;
-}
-
-.card__button-container:focus-visible {
+.card__icon-button:focus-visible {
   outline: none;
+}
 
-  .like-icon {
-    outline: 2px solid var(--accent-color);
-    outline-offset: -1px;
-  }
-
-  .card__like-button {
-    box-shadow: 2px 2px 0px 0px #000000;
-  }
+.heart {
+  transform-origin: center center;
 }
 
 .sparks {
@@ -271,67 +233,62 @@
 
 .core {
   fill: transparent;
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
 .main-body {
   fill: transparent;
-  transition: fill 0.3s 0.05s;
+  transition: fill 0.3s linear;
 }
 
 .contour {
-  transition: fill 0.3s 0.06s;
+  transition: fill 0.3s linear;
 }
 
 .card__button-container:hover {
   cursor: pointer;
 
+  .button::before {
+    transform: translate(0);
+  }
+
   .core {
     fill: var(--accent-color);
-    transition: fill 0.03s;
+    transition: fill 0.3s linear;
   }
 
   .main-body {
     fill: var(--accent-color);
-    transition: fill 0.3s;
-  }
-
-  .card__like-button::before {
-    transform: translate(0);
-  }
-  .card__icon-button .button__text {
-    position: relative;
-    z-index: 2;
-    color: var(--main-color);
-    mix-blend-mode: difference;
+    transition: fill 0.3s 0.05s linear;
   }
 }
 
 .card__button-container:active {
   .core {
     fill: var(--heart-color);
-    transition: fill 0.03s;
+    transition: fill 0.03s linear;
   }
 
   .main-body {
     fill: var(--heart-color);
-    transition: fill 0.3s;
+    transition: fill 0.3s 0.05s linear;
   }
 }
 
 .like-icon.is-liked {
   .contour {
     fill: var(--heart-color);
+    transition: fill 0.1s linear;
   }
 
   .core {
     fill: var(--heart-color);
-    transition: fill 0.03s;
+    transition: fill 0.03s linear;
   }
 
   .main-body {
     fill: var(--heart-color);
-    transition: fill 0.3s;
+    transition: fill 0.3s 0.05s linear;
   }
 
   .heart {
@@ -343,21 +300,18 @@
   }
 }
 
-.save__button {
+.button {
   position: relative;
-  width: max(336px, 306px);
-  background: var(--main-color);
-  margin: 50px auto 100px;
-  height: 55px;
-  display: flex;
   border: solid var(--accent-color) 2px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  transition: box-shadow 0.3s ease;
   overflow: hidden;
-  padding: 0;
+  background-color: var(--main-color);
+  transition: box-shadow 0.3s ease;
 }
 
-.save__button::before {
+.button::before {
   content: "";
   position: absolute;
   background-color: var(--accent-color);
@@ -367,25 +321,49 @@
   width: 100%;
 }
 
-.save__button:hover::before {
+.button:hover::before {
   transform: translate(0);
 }
 
-.save__button:focus-visible {
+.button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0px 0px #000000;
 }
 
+.card__like-button {
+  width: 130px;
+  height: 100%;
+}
+
+.button__text {
+  color: var(--button__reverse-color);
+  font-family: "PressStart2P", fantasy;
+  font-size: 14px;
+  transition: color 0.5s ease-in-out;
+  mix-blend-mode: difference;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+}
+
+.save__button {
+  width: max(336px, 306px);
+  background: var(--main-color);
+  margin: 50px auto 100px;
+  height: 55px;
+}
+
 .save__button-icon {
   color: var(--button__reverse-color);
-  margin-left: 12px;
   margin-right: 8px;
   mix-blend-mode: difference;
 }
 
 .save__dialog {
   width: max(353px, 341px);
-  height: 191px;
+  min-height: 191px;
   background-color: var(--main-color);
   border: solid 2px var(--accent-color);
   padding: 0;
@@ -396,6 +374,10 @@
   width: max(293px, 257px);
   height: 38px;
   justify-content: center;
+}
+
+.save__dialog .button__text {
+  text-transform: uppercase;
 }
 
 .save__dialog[open] {
@@ -415,12 +397,11 @@
 
 .dialog__title {
   color: var(--accent-color);
-  font-family: "PressStart2P";
+  font-family: "PressStart2P", fantasy;
   font-size: 14px;
   text-transform: uppercase;
   line-height: 1.5em;
   width: max(293px, 257px);
-  height: 63px;
   margin-top: 30px;
   display: flex;
   gap: 10px;
@@ -442,10 +423,10 @@
   }
 }
 
-@media (width <= 375px) {
+@media (width <=375px) {
   .header {
     width: 100%;
-    height: 327px;
+    min-height: 327px;
   }
 
   .header__title {
@@ -461,6 +442,11 @@
     width: 85%;
   }
 
+  .card__image_wrapper {
+    height: 371px;
+    width: 371px;
+  }
+
   .save__button {
     flex-direction: column;
     width: 84%;
@@ -473,4 +459,3 @@
     margin: 15px auto 8px;
   }
 }
-
