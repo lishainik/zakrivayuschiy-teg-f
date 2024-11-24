@@ -204,7 +204,6 @@
   border: none;
   justify-content: space-between;
   padding: 0;
-  transition: box-shadow 0.3s ease;
 }
 
 .card__icon-button {
@@ -350,7 +349,6 @@
   color: var(--reverse-color);
   font-family: "PressStart2P", fantasy;
   font-size: 14px;
-  transition: color 0.5s ease-in-out;
   mix-blend-mode: difference;
 }
 
@@ -417,7 +415,7 @@
   align-items: center;
 }
 
-.dialog__title span {
+.dialog__title p {
   width: 80%;
 }
 
